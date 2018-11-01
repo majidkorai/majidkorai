@@ -13,8 +13,10 @@ class App extends Component {
             name: "",
             email: "",
             subject: "",
-            message: ""
+            message: "",
+            responseSubmitted: false,
         };
+        this._reCaptchaRef = React.createRef();
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleCaptchaResponse = this.handleCaptchaResponse.bind(this);
@@ -38,10 +40,16 @@ class App extends Component {
     }
 
     handleSubmit(event) {
-        if (this.state.verified) {
-            let data = { name: this.state.name, email: this.state.email, subject: this.state.subject, message: this.state.message };
+        const recaptchaValue = this._reCaptchaRef.current.getValue();
+        if (recaptchaValue) {
+            const recaptchaValue = this._reCaptchaRef.current.getValue();
+            let data = { name: this.state.name, email: this.state.email, subject: this.state.subject, message: this.state.message, token: recaptchaValue };
             console.log(data);
-            this.submitForm(data).then(res => { console.log(res) });
+            this.submitForm(data).then(res => {
+                this.setState({ responseSubmitted: true });
+                this.setState({ formState: res.success });
+                this.setState({ formResponse: res.message });
+            });
         }
         event.preventDefault();
     }
@@ -368,36 +376,44 @@ class App extends Component {
                                         <div className="col-md-12">
                                             <div className="feedback-form">
                                                 <h2>Get in touch</h2>
-                                                <form>
-                                                    <div className="form-group text-left">
-                                                        <label htmlFor="InputName">Name</label>
-                                                        <input type="text" value={this.state.name} onChange={this.handleChange} name="name" required="" className="form-control" id="InputName"
-                                                            placeholder="Full Name">
-                                                        </input>
-                                                    </div>
-                                                    <div className="form-group text-left">
-                                                        <label htmlFor="InputEmail">Email address</label>
-                                                        <input type="email" value={this.state.email} onChange={this.handleChange} name="email" required="" className="form-control" id="InputEmail"
-                                                            placeholder="Email"></input>
-                                                    </div>
-                                                    <div className="form-group text-left">
-                                                        <label htmlFor="InputSubject">Subject</label>
-                                                        <input type="text" value={this.state.subject} onChange={this.handleChange} name="subject" className="form-control" id="InputSubject"
-                                                            placeholder="Subject"></input>
-                                                    </div>
-                                                    <div className="form-group text-left">
-                                                        <label htmlFor="message-text" className="control-label">Message</label>
-                                                        <textarea value={this.state.message} onChange={this.handleChange} className="form-control" rows="4" required="" name="message" id="message-text"
-                                                            placeholder="Write message"></textarea>
-                                                    </div>
-                                                    <div className="form-group">
-                                                        <ReCAPTCHA
-                                                            sitekey="6LcEWHUUAAAAAEUlQfuVagauZcvuM7ZgppDDZjDz"
-                                                            onChange={this.handleCaptchaResponse}
-                                                        />
-                                                    </div>
-                                                    <button type="submit" className="btn btn-primary">Submit</button>
-                                                </form>
+                                                {
+                                                    this.state.responseSubmitted ?
+                                                        (
+                                                            this.state.formState ?
+                                                                <div className="label label-success">{this.state.formResponse}</div>
+                                                                :
+                                                                <div className="label label-danger">{this.state.formResponse}</div>
+                                                        )
+                                                        :
+                                                        <form onSubmit={this.handleSubmit} >
+                                                            <div className="form-group text-left">
+                                                                <label htmlFor="InputName">Name</label>
+                                                                <input type="text" value={this.state.name} onChange={this.handleChange} name="name" required="" className="form-control" id="InputName"
+                                                                    placeholder="Full Name">
+                                                                </input>
+                                                            </div>
+                                                            <div className="form-group text-left">
+                                                                <label htmlFor="InputEmail">Email address</label>
+                                                                <input type="email" value={this.state.email} onChange={this.handleChange} name="email" required="" className="form-control" id="InputEmail"
+                                                                    placeholder="Email"></input>
+                                                            </div>
+                                                            <div className="form-group text-left">
+                                                                <label htmlFor="InputSubject">Subject</label>
+                                                                <input type="text" value={this.state.subject} onChange={this.handleChange} name="subject" className="form-control" id="InputSubject"
+                                                                    placeholder="Subject"></input>
+                                                            </div>
+                                                            <div className="form-group text-left">
+                                                                <label htmlFor="message-text" className="control-label">Message</label>
+                                                                <textarea value={this.state.message} onChange={this.handleChange} className="form-control" rows="4" required="" name="message" id="message-text"
+                                                                    placeholder="Write message"></textarea>
+                                                            </div>
+                                                            <div className="form-group">
+                                                                <ReCAPTCHA ref={this._reCaptchaRef} sitekey="6LcEWHUUAAAAAEUlQfuVagauZcvuM7ZgppDDZjDz" />
+                                                            </div>
+                                                            <button type="submit" className="btn btn-primary">Submit</button>
+                                                        </form>
+                                                }
+
                                             </div>
                                         </div>
                                     </div>
