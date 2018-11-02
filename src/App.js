@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import 'bootstrap3/dist/css/bootstrap.min.css';
-import 'font-awesome/css/font-awesome.min.css'
 import './index.css';
 import ReCAPTCHA from "react-google-recaptcha";
 class App extends Component {
