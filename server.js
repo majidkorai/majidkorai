@@ -24,11 +24,6 @@ let transporter = nodemailer.createTransport({
     }
 });
 
-// API calls
-app.get('/api/hello', (req, res) => {
-    res.send({ express: 'Hello From Express' });
-});
-
 app.post('/api/contact', (req, res) => {
     //console.log(req.body)
     recaptcha.checkResponse(req.body.token, function (error, response) {
