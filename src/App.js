@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './index.css';
+import './css/font-awesome.min.css';
+import './css/bootstrap.min.css';
+import './css/index.css';
 import ReCAPTCHA from "react-google-recaptcha";
 class App extends Component {
     constructor() {
