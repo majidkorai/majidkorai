@@ -262,7 +262,7 @@ button:focus,
   z-index             : -1;
   width               : 100%;
   height              : 100%;
-  background-image    : url(./img/me.jpg);
+  background-image    : url(../img/me.jpg);
   background-size     : cover;
   background-position : center top;
 }
@@ -557,7 +557,7 @@ button:focus,
 
 #status,
 .status-mes {
-  background-image    : url(./img/puff.svg);
+  background-image    : url(../img/puff.svg);
   background-position : center;
   background-repeat   : no-repeat;
   height              : 200px;
