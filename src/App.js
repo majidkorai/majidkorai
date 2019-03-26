@@ -103,7 +103,7 @@ class App extends Component {
                                         </div>
                                         <div className="col-md-12">
                                             <p>
-                                                I am a passionate Software Engineer (Web Developer), crazy about the web technologies.
+                                                I am a passionate Software Engineer (Web Applications), crazy about the web technologies.
                                                 I started my career back in 2008, creating web based applications using ASP.NET / C#.
                                             </p>
                                             <p>
