@@ -107,10 +107,10 @@ class App extends Component {
                                                 I started my career back in 2008, creating web based applications using ASP.NET / C#.
                                             </p>
                                             <p>
-                                                My love with Javascript and availability of NodeJS and Javascript frameworks like Angular and React made me switch to pure Javascript programming.
+                                                My love with Javascript and availability of NodeJS and Javascript frameworks like AngularJs, React and Vue etc. made me switch to pure Javascript programming.
                                             </p>
                                             <p>
-                                                Currently I work as Front-end Developer and develop applications using Angular JS and React JS.
+                                                Currently I work as Front-end Developer and develop applications using AngularJS and React and Vue.js.
                                             </p>
                                         </div>
                                     </div>
@@ -190,7 +190,7 @@ class App extends Component {
                                             <div className="progress-wrapper">
 
                                                 <div className="progress-item">
-                                                    <span className="progress-title">Javascript (Angular / React)</span>
+                                                    <span className="progress-title">Javascript (AngularJs / React / Vue)</span>
 
                                                     <div className="progress">
                                                         <div className="progress-bar" role="progressbar"
