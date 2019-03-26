@@ -107,10 +107,10 @@ class App extends Component {
                                                 I started my career back in 2008, creating web based applications using ASP.NET / C#.
                                             </p>
                                             <p>
-                                                My love with Javascript and availability of Node.jS and Javascript frameworks like AngularJs, React and Vue etc. made me to get more closer to Javascript programming.
+                                                My love with Javascript and availability of Node.js and Javascript frameworks like AngularJs, React and Vue etc. made me to get more closer to Javascript programming.
                                             </p>
                                             <p>
-                                                Currently I work as a Full-Stack Engineer and develop applications using AngularJS and React and Vue.js as fron-end and Node.js and .NET Core as back-end.
+                                                Currently I work as a Full-Stack Engineer and develop applications using AngularJS, React and Vue as fron-end and Node.js and .NET Core as back-end.
                                             </p>
                                         </div>
                                     </div>
