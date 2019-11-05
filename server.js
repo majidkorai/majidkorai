@@ -62,4 +62,4 @@ app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.listen(port, "172.31.55.185", () => console.log(`Listening on port ${port}`));
+app.listen(port, "172.31.1.5", () => console.log(`Listening on port ${port}`));
