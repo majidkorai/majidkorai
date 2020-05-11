@@ -415,7 +415,7 @@ class App extends Component {
                                     <div className="container-fluid">
                                         <div className="row">
                                             <div className="col-md-12">
-                                                &copy; Copyright 2019
+                                                &copy; Copyright {(new Date()).getFullYear()}
                                             </div>
                                         </div>
                                     </div>
