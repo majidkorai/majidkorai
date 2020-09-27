@@ -25,6 +25,15 @@ let transporter = nodemailer.createTransport({
     }
 });
 
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+app.listen(port, host, () => console.log(`Listening on ${host}:${port}`));
+
+
 app.post('/api/contact', (req, res) => {
     //console.log(req.body)
     try {
@@ -60,11 +69,3 @@ app.post('/api/contact', (req, res) => {
         console.log(error);
     }
 });
-
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
-app.listen(port, host, () => console.log(`Listening on ${host}:${port}`));
