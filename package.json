@@ -58,7 +58,7 @@
   },
   "proxy": "http://localhost:5000",
   "scripts": {
-    "start": "node scripts/start.js",
+    "start": "PORT=5000 node scripts/start.js",
     "dev": "node server.js",
     "build": "node scripts/build.js"
   },
