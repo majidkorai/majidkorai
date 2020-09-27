@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 var nodemailer = require('nodemailer');
 var Recaptcha = require('recaptcha-verify');
 const path = require('path');
@@ -8,6 +9,7 @@ const port = process.env.PORT || 5500;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cors());
 
 let recaptcha = new Recaptcha({
     secret: '6LcEWHUUAAAAAIpNROjRCBTu_ZG8UXyuYNdMGAg2',
