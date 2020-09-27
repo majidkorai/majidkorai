@@ -4,7 +4,7 @@ var Recaptcha = require('recaptcha-verify');
 const path = require('path');
 const app = express();
 const host = process.env.HOST || 'localhost';
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5500;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -24,15 +24,6 @@ let transporter = nodemailer.createTransport({
         pass: 'zzzvqcidgcngowqz'
     }
 });
-
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
-app.listen(port, host, () => console.log(`Listening on ${host}:${port}`));
-
 
 app.post('/api/contact', (req, res) => {
     //console.log(req.body)
@@ -69,3 +60,11 @@ app.post('/api/contact', (req, res) => {
         console.log(error);
     }
 });
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+app.listen(port, host, () => console.log(`Listening on ${host}:${port}`));
